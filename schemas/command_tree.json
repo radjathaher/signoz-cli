@@ -1,0 +1,1382 @@
+{
+  "base_url": "http://localhost:3301",
+  "resources": [
+    {
+      "name": "authdomains",
+      "ops": [
+        {
+          "deprecated": false,
+          "description": "This endpoint creates an auth domain",
+          "method": "POST",
+          "name": "create-auth-domain",
+          "params": [],
+          "path": "/api/v1/domains",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Create auth domain",
+          "tags": [
+            "authdomains"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint deletes an auth domain",
+          "method": "DELETE",
+          "name": "delete-auth-domain",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/domains/{id}",
+          "request_body": null,
+          "summary": "Delete auth domain",
+          "tags": [
+            "authdomains"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint lists all auth domains",
+          "method": "GET",
+          "name": "list-auth-domains",
+          "params": [],
+          "path": "/api/v1/domains",
+          "request_body": null,
+          "summary": "List all auth domains",
+          "tags": [
+            "authdomains"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint updates an auth domain",
+          "method": "PUT",
+          "name": "update-auth-domain",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/domains/{id}",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Update auth domain",
+          "tags": [
+            "authdomains"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "dashboard",
+      "ops": [
+        {
+          "deprecated": false,
+          "description": "This endpoints creates public sharing config and enables public sharing of the dashboard",
+          "method": "POST",
+          "name": "create-public-dashboard",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/dashboards/{id}/public",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Create public dashboard",
+          "tags": [
+            "dashboard"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoints deletes the public sharing config and disables the public sharing of a dashboard",
+          "method": "DELETE",
+          "name": "delete-public-dashboard",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/dashboards/{id}/public",
+          "request_body": null,
+          "summary": "Delete public dashboard",
+          "tags": [
+            "dashboard"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoints returns public sharing config for a dashboard",
+          "method": "GET",
+          "name": "get-public-dashboard",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/dashboards/{id}/public",
+          "request_body": null,
+          "summary": "Get public dashboard",
+          "tags": [
+            "dashboard"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoints returns the sanitized dashboard data for public access",
+          "method": "GET",
+          "name": "get-public-dashboard-data",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/public/dashboards/{id}",
+          "request_body": null,
+          "summary": "Get public dashboard data",
+          "tags": [
+            "dashboard"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint return query range results for a widget of public dashboard",
+          "method": "GET",
+          "name": "get-public-dashboard-widget-query-range",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            },
+            {
+              "flag": "idx",
+              "is_array": false,
+              "location": "path",
+              "name": "path__idx",
+              "param_name": "idx",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/public/dashboards/{id}/widgets/{idx}/query_range",
+          "request_body": null,
+          "summary": "Get query range result",
+          "tags": [
+            "dashboard"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoints updates the public sharing config for a dashboard",
+          "method": "PUT",
+          "name": "update-public-dashboard",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/dashboards/{id}/public",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Update public dashboard",
+          "tags": [
+            "dashboard"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "features",
+      "ops": [
+        {
+          "deprecated": false,
+          "description": "This endpoint returns the supported features and their details",
+          "method": "GET",
+          "name": "get-features",
+          "params": [],
+          "path": "/api/v2/features",
+          "request_body": null,
+          "summary": "Get features",
+          "tags": [
+            "features"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gateway",
+      "ops": [
+        {
+          "deprecated": false,
+          "description": "This endpoint creates an ingestion key for the workspace",
+          "method": "POST",
+          "name": "create-ingestion-key",
+          "params": [],
+          "path": "/api/v2/gateway/ingestion_keys",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Create ingestion key for workspace",
+          "tags": [
+            "gateway"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint creates an ingestion key limit",
+          "method": "POST",
+          "name": "create-ingestion-key-limit",
+          "params": [
+            {
+              "flag": "key-id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__key-id",
+              "param_name": "keyId",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v2/gateway/ingestion_keys/{keyId}/limits",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Create limit for the ingestion key",
+          "tags": [
+            "gateway"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint deletes an ingestion key for the workspace",
+          "method": "DELETE",
+          "name": "delete-ingestion-key",
+          "params": [
+            {
+              "flag": "key-id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__key-id",
+              "param_name": "keyId",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v2/gateway/ingestion_keys/{keyId}",
+          "request_body": null,
+          "summary": "Delete ingestion key for workspace",
+          "tags": [
+            "gateway"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint deletes an ingestion key limit",
+          "method": "DELETE",
+          "name": "delete-ingestion-key-limit",
+          "params": [
+            {
+              "flag": "limit-id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__limit-id",
+              "param_name": "limitId",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v2/gateway/ingestion_keys/limits/{limitId}",
+          "request_body": null,
+          "summary": "Delete limit for the ingestion key",
+          "tags": [
+            "gateway"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint returns the ingestion keys for a workspace",
+          "method": "GET",
+          "name": "get-ingestion-keys",
+          "params": [],
+          "path": "/api/v2/gateway/ingestion_keys",
+          "request_body": null,
+          "summary": "Get ingestion keys for workspace",
+          "tags": [
+            "gateway"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint returns the ingestion keys for a workspace",
+          "method": "GET",
+          "name": "search-ingestion-keys",
+          "params": [],
+          "path": "/api/v2/gateway/ingestion_keys/search",
+          "request_body": null,
+          "summary": "Search ingestion keys for workspace",
+          "tags": [
+            "gateway"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint updates an ingestion key for the workspace",
+          "method": "PATCH",
+          "name": "update-ingestion-key",
+          "params": [
+            {
+              "flag": "key-id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__key-id",
+              "param_name": "keyId",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v2/gateway/ingestion_keys/{keyId}",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Update ingestion key for workspace",
+          "tags": [
+            "gateway"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint updates an ingestion key limit",
+          "method": "PATCH",
+          "name": "update-ingestion-key-limit",
+          "params": [
+            {
+              "flag": "limit-id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__limit-id",
+              "param_name": "limitId",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v2/gateway/ingestion_keys/limits/{limitId}",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Update limit for the ingestion key",
+          "tags": [
+            "gateway"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "global",
+      "ops": [
+        {
+          "deprecated": false,
+          "description": "This endpoints returns global config",
+          "method": "GET",
+          "name": "get-global-config",
+          "params": [],
+          "path": "/api/v1/global/config",
+          "request_body": null,
+          "summary": "Get global config",
+          "tags": [
+            "global"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "logs",
+      "ops": [
+        {
+          "deprecated": false,
+          "description": "This endpoints promotes and indexes paths",
+          "method": "POST",
+          "name": "handle-promote-and-index-paths",
+          "params": [],
+          "path": "/api/v1/logs/promote_paths",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "array<object>"
+          },
+          "summary": "Promote and index paths",
+          "tags": [
+            "logs"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoints promotes and indexes paths",
+          "method": "GET",
+          "name": "list-promoted-and-indexed-paths",
+          "params": [],
+          "path": "/api/v1/logs/promote_paths",
+          "request_body": null,
+          "summary": "Promote and index paths",
+          "tags": [
+            "logs"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "SigNoz query_range API",
+          "method": "POST",
+          "name": "query-range",
+          "params": [],
+          "path": "/api/v5/query_range",
+          "request_body": {
+            "content_type": "application/json",
+            "required": true,
+            "schema_type": "QueryRangeRequest"
+          },
+          "summary": "Query range for logs",
+          "tags": [
+            "logs"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "metrics",
+      "ops": [
+        {
+          "deprecated": false,
+          "description": "This endpoint returns associated alerts for a specified metric",
+          "method": "GET",
+          "name": "get-metric-alerts",
+          "params": [
+            {
+              "flag": "metric-name",
+              "is_array": false,
+              "location": "query",
+              "name": "query__metric-name",
+              "param_name": "metricName",
+              "required": false,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v2/metric/alerts",
+          "request_body": null,
+          "summary": "Get metric alerts",
+          "tags": [
+            "metrics"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint returns attribute keys and their unique values for a specified metric",
+          "method": "POST",
+          "name": "get-metric-attributes",
+          "params": [],
+          "path": "/api/v2/metrics/attributes",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Get metric attributes",
+          "tags": [
+            "metrics"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint returns associated dashboards for a specified metric",
+          "method": "GET",
+          "name": "get-metric-dashboards",
+          "params": [
+            {
+              "flag": "metric-name",
+              "is_array": false,
+              "location": "query",
+              "name": "query__metric-name",
+              "param_name": "metricName",
+              "required": false,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v2/metric/dashboards",
+          "request_body": null,
+          "summary": "Get metric dashboards",
+          "tags": [
+            "metrics"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint returns highlights like number of datapoints, totaltimeseries, active time series, last received time for a specified metric",
+          "method": "GET",
+          "name": "get-metric-highlights",
+          "params": [
+            {
+              "flag": "metric-name",
+              "is_array": false,
+              "location": "query",
+              "name": "query__metric-name",
+              "param_name": "metricName",
+              "required": false,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v2/metric/highlights",
+          "request_body": null,
+          "summary": "Get metric highlights",
+          "tags": [
+            "metrics"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint returns metadata information like metric description, unit, type, temporality, monotonicity for a specified metric",
+          "method": "GET",
+          "name": "get-metric-metadata",
+          "params": [
+            {
+              "flag": "metric-name",
+              "is_array": false,
+              "location": "query",
+              "name": "query__metric-name",
+              "param_name": "metricName",
+              "required": false,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v2/metrics/metadata",
+          "request_body": null,
+          "summary": "Get metric metadata",
+          "tags": [
+            "metrics"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint provides list of metrics with their number of samples and timeseries for the given time range",
+          "method": "POST",
+          "name": "get-metrics-stats",
+          "params": [],
+          "path": "/api/v2/metrics/stats",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Get metrics statistics",
+          "tags": [
+            "metrics"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint returns a treemap visualization showing the proportional distribution of metrics by sample count or time series count",
+          "method": "POST",
+          "name": "get-metrics-treemap",
+          "params": [],
+          "path": "/api/v2/metrics/treemap",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Get metrics treemap",
+          "tags": [
+            "metrics"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "SigNoz query_range API",
+          "method": "POST",
+          "name": "query-range",
+          "params": [],
+          "path": "/api/v5/query_range",
+          "request_body": {
+            "content_type": "application/json",
+            "required": true,
+            "schema_type": "QueryRangeRequest"
+          },
+          "summary": "Query range for metrics",
+          "tags": [
+            "metrics"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint helps to update metadata information like metric description, unit, type, temporality, monotonicity for a specified metric",
+          "method": "POST",
+          "name": "update-metric-metadata",
+          "params": [
+            {
+              "flag": "metric-name",
+              "is_array": false,
+              "location": "path",
+              "name": "path__metric-name",
+              "param_name": "metric_name",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v2/metrics/{metric_name}/metadata",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Update metric metadata",
+          "tags": [
+            "metrics"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "orgs",
+      "ops": [
+        {
+          "deprecated": false,
+          "description": "This endpoint returns the organization I belong to",
+          "method": "GET",
+          "name": "get-my-organization",
+          "params": [],
+          "path": "/api/v2/orgs/me",
+          "request_body": null,
+          "summary": "Get my organization",
+          "tags": [
+            "orgs"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint updates the organization I belong to",
+          "method": "PUT",
+          "name": "update-my-organization",
+          "params": [],
+          "path": "/api/v2/orgs/me",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Update my organization",
+          "tags": [
+            "orgs"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "preferences",
+      "ops": [
+        {
+          "deprecated": false,
+          "description": "This endpoint returns the org preference by name",
+          "method": "GET",
+          "name": "get-org-preference",
+          "params": [
+            {
+              "flag": "name",
+              "is_array": false,
+              "location": "path",
+              "name": "path__name",
+              "param_name": "name",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/org/preferences/{name}",
+          "request_body": null,
+          "summary": "Get org preference",
+          "tags": [
+            "preferences"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint returns the user preference by name",
+          "method": "GET",
+          "name": "get-user-preference",
+          "params": [
+            {
+              "flag": "name",
+              "is_array": false,
+              "location": "path",
+              "name": "path__name",
+              "param_name": "name",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/user/preferences/{name}",
+          "request_body": null,
+          "summary": "Get user preference",
+          "tags": [
+            "preferences"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint lists all org preferences",
+          "method": "GET",
+          "name": "list-org-preferences",
+          "params": [],
+          "path": "/api/v1/org/preferences",
+          "request_body": null,
+          "summary": "List org preferences",
+          "tags": [
+            "preferences"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint lists all user preferences",
+          "method": "GET",
+          "name": "list-user-preferences",
+          "params": [],
+          "path": "/api/v1/user/preferences",
+          "request_body": null,
+          "summary": "List user preferences",
+          "tags": [
+            "preferences"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint updates the org preference by name",
+          "method": "PUT",
+          "name": "update-org-preference",
+          "params": [
+            {
+              "flag": "name",
+              "is_array": false,
+              "location": "path",
+              "name": "path__name",
+              "param_name": "name",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/org/preferences/{name}",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Update org preference",
+          "tags": [
+            "preferences"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint updates the user preference by name",
+          "method": "PUT",
+          "name": "update-user-preference",
+          "params": [
+            {
+              "flag": "name",
+              "is_array": false,
+              "location": "path",
+              "name": "path__name",
+              "param_name": "name",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/user/preferences/{name}",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Update user preference",
+          "tags": [
+            "preferences"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sessions",
+      "ops": [
+        {
+          "deprecated": false,
+          "description": "This endpoint creates a session for a user using email and password.",
+          "method": "POST",
+          "name": "create-session-by-email-password",
+          "params": [],
+          "path": "/api/v2/sessions/email_password",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Create session by email and password",
+          "tags": [
+            "sessions"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint creates a session for a user using google callback",
+          "method": "GET",
+          "name": "create-session-by-google-callback",
+          "params": [],
+          "path": "/api/v1/complete/google",
+          "request_body": null,
+          "summary": "Create session by google callback",
+          "tags": [
+            "sessions"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint creates a session for a user using oidc callback",
+          "method": "GET",
+          "name": "create-session-by-oidccallback",
+          "params": [],
+          "path": "/api/v1/complete/oidc",
+          "request_body": null,
+          "summary": "Create session by oidc callback",
+          "tags": [
+            "sessions"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint creates a session for a user using saml callback",
+          "method": "POST",
+          "name": "create-session-by-samlcallback",
+          "params": [
+            {
+              "flag": "relay-state",
+              "is_array": false,
+              "location": "query",
+              "name": "query__relay-state",
+              "param_name": "RelayState",
+              "required": false,
+              "schema_type": "string"
+            },
+            {
+              "flag": "samlresponse",
+              "is_array": false,
+              "location": "query",
+              "name": "query__samlresponse",
+              "param_name": "SAMLResponse",
+              "required": false,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/complete/saml",
+          "request_body": {
+            "content_type": "application/x-www-form-urlencoded",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Create session by saml callback",
+          "tags": [
+            "sessions"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint deletes the session",
+          "method": "DELETE",
+          "name": "delete-session",
+          "params": [],
+          "path": "/api/v2/sessions",
+          "request_body": null,
+          "summary": "Delete session",
+          "tags": [
+            "sessions"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint returns the context for the session",
+          "method": "GET",
+          "name": "get-session-context",
+          "params": [],
+          "path": "/api/v2/sessions/context",
+          "request_body": null,
+          "summary": "Get session context",
+          "tags": [
+            "sessions"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint rotates the session",
+          "method": "POST",
+          "name": "rotate-session",
+          "params": [],
+          "path": "/api/v2/sessions/rotate",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Rotate session",
+          "tags": [
+            "sessions"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "traces",
+      "ops": [
+        {
+          "deprecated": false,
+          "description": "SigNoz query_range API",
+          "method": "POST",
+          "name": "query-range",
+          "params": [],
+          "path": "/api/v5/query_range",
+          "request_body": {
+            "content_type": "application/json",
+            "required": true,
+            "schema_type": "QueryRangeRequest"
+          },
+          "summary": "Query range for traces",
+          "tags": [
+            "traces"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "users",
+      "ops": [
+        {
+          "deprecated": false,
+          "description": "This endpoint accepts an invite by token",
+          "method": "POST",
+          "name": "accept-invite",
+          "params": [],
+          "path": "/api/v1/invite/accept",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Accept invite",
+          "tags": [
+            "users"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint changes the password by id",
+          "method": "POST",
+          "name": "change-password",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/changePassword/{id}",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Change password",
+          "tags": [
+            "users"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint creates an api key",
+          "method": "POST",
+          "name": "create-apikey",
+          "params": [],
+          "path": "/api/v1/pats",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Create api key",
+          "tags": [
+            "users"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint creates a bulk invite for a user",
+          "method": "POST",
+          "name": "create-bulk-invite",
+          "params": [],
+          "path": "/api/v1/invite/bulk",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "array<object>"
+          },
+          "summary": "Create bulk invite",
+          "tags": [
+            "users"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint creates an invite for a user",
+          "method": "POST",
+          "name": "create-invite",
+          "params": [],
+          "path": "/api/v1/invite",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Create invite",
+          "tags": [
+            "users"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint deletes an invite by id",
+          "method": "DELETE",
+          "name": "delete-invite",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/invite/{id}",
+          "request_body": null,
+          "summary": "Delete invite",
+          "tags": [
+            "users"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint deletes the user by id",
+          "method": "DELETE",
+          "name": "delete-user",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/user/{id}",
+          "request_body": null,
+          "summary": "Delete user",
+          "tags": [
+            "users"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint gets an invite by token",
+          "method": "GET",
+          "name": "get-invite",
+          "params": [
+            {
+              "flag": "token",
+              "is_array": false,
+              "location": "path",
+              "name": "path__token",
+              "param_name": "token",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/invite/{token}",
+          "request_body": null,
+          "summary": "Get invite",
+          "tags": [
+            "users"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint returns the user I belong to",
+          "method": "GET",
+          "name": "get-my-user",
+          "params": [],
+          "path": "/api/v1/user/me",
+          "request_body": null,
+          "summary": "Get my user",
+          "tags": [
+            "users"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint returns the reset password token by id",
+          "method": "GET",
+          "name": "get-reset-password-token",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/getResetPasswordToken/{id}",
+          "request_body": null,
+          "summary": "Get reset password token",
+          "tags": [
+            "users"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint returns the user by id",
+          "method": "GET",
+          "name": "get-user",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/user/{id}",
+          "request_body": null,
+          "summary": "Get user",
+          "tags": [
+            "users"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint lists all api keys",
+          "method": "GET",
+          "name": "list-apikeys",
+          "params": [],
+          "path": "/api/v1/pats",
+          "request_body": null,
+          "summary": "List api keys",
+          "tags": [
+            "users"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint lists all invites",
+          "method": "GET",
+          "name": "list-invite",
+          "params": [],
+          "path": "/api/v1/invite",
+          "request_body": null,
+          "summary": "List invites",
+          "tags": [
+            "users"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint lists all users",
+          "method": "GET",
+          "name": "list-users",
+          "params": [],
+          "path": "/api/v1/user",
+          "request_body": null,
+          "summary": "List users",
+          "tags": [
+            "users"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint resets the password by token",
+          "method": "POST",
+          "name": "reset-password",
+          "params": [],
+          "path": "/api/v1/resetPassword",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Reset password",
+          "tags": [
+            "users"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint revokes an api key",
+          "method": "DELETE",
+          "name": "revoke-apikey",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/pats/{id}",
+          "request_body": null,
+          "summary": "Revoke api key",
+          "tags": [
+            "users"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint updates an api key",
+          "method": "PUT",
+          "name": "update-apikey",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/pats/{id}",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Update api key",
+          "tags": [
+            "users"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "This endpoint updates the user by id",
+          "method": "PUT",
+          "name": "update-user",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/user/{id}",
+          "request_body": {
+            "content_type": "application/json",
+            "required": false,
+            "schema_type": "object"
+          },
+          "summary": "Update user",
+          "tags": [
+            "users"
+          ]
+        }
+      ]
+    }
+  ],
+  "version": 1
+}
