@@ -17,8 +17,10 @@ pub struct HttpResponse {
     pub status: u16,
     pub headers: Vec<(String, String)>,
     pub body: Value,
+    pub content_type: String,
 }
 
+#[derive(Clone)]
 pub enum Body {
     Json(Value),
     Text(String),
@@ -121,6 +123,7 @@ impl HttpClient {
             status,
             headers: headers_out,
             body,
+            content_type,
         })
     }
 }

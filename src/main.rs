@@ -70,7 +70,14 @@ fn run() -> Result<()> {
     merged_headers.extend(header_params);
 
     let client = HttpClient::new(base_url, api_key, token, merged_headers, timeout)?;
-    let response = client.execute(&op.method, &path, &query, body, content_type.as_deref())?;
+    let mut response = client.execute(&op.method, &path, &query, body.clone(), content_type.as_deref())?;
+    if should_retry_v1(op, &response) {
+        let fallback_path = op.path.replacen("/api/v2/", "/api/v1/", 1);
+        let fallback = client.execute(&op.method, &fallback_path, &query, body, content_type.as_deref())?;
+        if !is_html_response(&fallback) {
+            response = fallback;
+        }
+    }
 
     let output = if raw {
         json!({
@@ -93,6 +100,26 @@ fn run() -> Result<()> {
     }
 
     Ok(())
+}
+
+fn should_retry_v1(op: &Operation, response: &http::HttpResponse) -> bool {
+    if !op.path.starts_with("/api/v2/") {
+        return false;
+    }
+    is_html_response(response)
+}
+
+fn is_html_response(response: &http::HttpResponse) -> bool {
+    if response.content_type.contains("text/html") {
+        return true;
+    }
+    match &response.body {
+        Value::String(value) => {
+            let trimmed = value.trim_start().to_ascii_lowercase();
+            trimmed.starts_with("<!doctype html") || trimmed.starts_with("<html")
+        }
+        _ => false,
+    }
 }
 
 fn build_cli(tree: &CommandTree) -> Command {
