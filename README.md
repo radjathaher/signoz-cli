@@ -4,7 +4,7 @@ Auto-generated SigNoz CLI from the OpenAPI spec, plus query_range helpers for lo
 
 ## Install
 
-### Install script (macOS arm64 only)
+### Install script (macOS arm64 + Linux x86_64)
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/radjathaher/signoz-cli/main/scripts/install.sh | bash
@@ -19,7 +19,7 @@ brew install signoz-cli
 
 ### Download binary
 
-Grab the latest macOS arm64 binary from GitHub Releases.
+Grab the latest `signoz-cli-<version>-<os>-<arch>.tar.gz` from GitHub Releases, unpack, and place `signoz` on your PATH.
 
 ### Build from source
 
