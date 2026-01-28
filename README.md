@@ -120,31 +120,28 @@ cat > trace.json <<'JSON'
 {
   "start": 1700000000000,
   "end": 1700000900000,
-  "step": 60,
-  "queryType": "builder",
-  "dataSource": "traces",
-  "aggregateOperator": "noop",
-  "aggregateAttribute": "",
-  "aggregateFunction": "",
-  "groupBy": [],
-  "filter": {
-    "items": [
+  "requestType": "raw",
+  "variables": {},
+  "compositeQuery": {
+    "queries": [
       {
-        "id": "trace-id",
-        "key": "traceID",
-        "op": "=",
-        "value": "a47f2c73aa0b2b5d8e864f253bb070f7"
+        "type": "builder_query",
+        "spec": {
+          "name": "A",
+          "signal": "traces",
+          "filter": {
+            "expression": "traceID = 'a47f2c73aa0b2b5d8e864f253bb070f7'"
+          },
+          "order": [
+            { "key": { "name": "timestamp" }, "direction": "desc" }
+          ],
+          "limit": 50,
+          "offset": 0,
+          "disabled": false
+        }
       }
-    ],
-    "op": "AND"
-  },
-  "expression": "A",
-  "disabled": false,
-  "limit": 50,
-  "orderBy": [
-    { "columnName": "timestamp", "order": "desc" }
-  ],
-  "reduceTo": "sum"
+    ]
+  }
 }
 JSON
 
@@ -155,31 +152,28 @@ cat > logs.json <<'JSON'
 {
   "start": 1700000000000,
   "end": 1700000900000,
-  "step": 60,
-  "queryType": "builder",
-  "dataSource": "logs",
-  "aggregateOperator": "noop",
-  "aggregateAttribute": "",
-  "aggregateFunction": "",
-  "groupBy": [],
-  "filter": {
-    "items": [
+  "requestType": "raw",
+  "variables": {},
+  "compositeQuery": {
+    "queries": [
       {
-        "id": "trace-id",
-        "key": "trace_id",
-        "op": "=",
-        "value": "a47f2c73aa0b2b5d8e864f253bb070f7"
+        "type": "builder_query",
+        "spec": {
+          "name": "A",
+          "signal": "logs",
+          "filter": {
+            "expression": "trace_id = 'a47f2c73aa0b2b5d8e864f253bb070f7' AND span_id = '03a2da795ab4c2eb'"
+          },
+          "order": [
+            { "key": { "name": "timestamp" }, "direction": "desc" },
+            { "key": { "name": "id" }, "direction": "desc" }
+          ],
+          "limit": 100,
+          "offset": 0
+        }
       }
-    ],
-    "op": "AND"
-  },
-  "expression": "A",
-  "disabled": false,
-  "limit": 100,
-  "orderBy": [
-    { "columnName": "timestamp", "order": "desc" }
-  ],
-  "reduceTo": "sum"
+    ]
+  }
 }
 JSON
 
