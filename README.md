@@ -129,6 +129,14 @@ cat > trace.json <<'JSON'
         "spec": {
           "name": "A",
           "signal": "traces",
+          "selectFields": [
+            { "name": "serviceName" },
+            { "name": "name" },
+            { "name": "traceID" },
+            { "name": "spanID" },
+            { "name": "timestamp" },
+            { "name": "durationNano" }
+          ],
           "filter": {
             "expression": "traceID = 'a47f2c73aa0b2b5d8e864f253bb070f7'"
           },
@@ -146,6 +154,9 @@ cat > trace.json <<'JSON'
 JSON
 
 signoz traces query-range --body @trace.json --pretty
+
+# Optional: if your traces include code attributes, add them to selectFields:
+# { "name": "code.filepath" }, { "name": "code.lineno" }, { "name": "code.function" }
 
 # 3) query logs for the traceID / spanID
 cat > logs.json <<'JSON'
