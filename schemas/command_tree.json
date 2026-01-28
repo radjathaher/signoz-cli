@@ -1,6 +1,47 @@
 {
-  "base_url": "http://localhost:3301",
+  "base_url": "https://apmsn.cakrawala.ai",
   "resources": [
+    {
+      "name": "alerts",
+      "ops": [
+        {
+          "deprecated": false,
+          "description": "Get alert (undocumented; verify against your SigNoz version).",
+          "method": "GET",
+          "name": "get-alert",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/alerts/{id}",
+          "request_body": null,
+          "summary": "Get alert",
+          "tags": [
+            "alerts"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "List alerts (undocumented; verify against your SigNoz version).",
+          "method": "GET",
+          "name": "list-alerts",
+          "params": [],
+          "path": "/api/v1/alerts",
+          "request_body": null,
+          "summary": "List alerts",
+          "tags": [
+            "alerts"
+          ]
+        }
+      ]
+    },
     {
       "name": "authdomains",
       "ops": [
@@ -82,6 +123,91 @@
           "summary": "Update auth domain",
           "tags": [
             "authdomains"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "channels",
+      "ops": [
+        {
+          "deprecated": false,
+          "description": "Create notification channel (documented in SigNoz alerting docs).",
+          "method": "POST",
+          "name": "create-channel",
+          "params": [],
+          "path": "/api/v1/channels",
+          "request_body": {
+            "content_type": "application/json",
+            "required": true,
+            "schema_type": "object"
+          },
+          "summary": "Create notification channel",
+          "tags": [
+            "channels"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "Delete notification channel (documented in SigNoz alerting docs).",
+          "method": "DELETE",
+          "name": "delete-channel",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/channels/{id}",
+          "request_body": null,
+          "summary": "Delete notification channel",
+          "tags": [
+            "channels"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "List notification channels (documented in SigNoz alerting docs).",
+          "method": "GET",
+          "name": "list-channels",
+          "params": [],
+          "path": "/api/v1/channels",
+          "request_body": null,
+          "summary": "List notification channels",
+          "tags": [
+            "channels"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "Update notification channel (documented in SigNoz alerting docs).",
+          "method": "PUT",
+          "name": "update-channel",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/channels/{id}",
+          "request_body": {
+            "content_type": "application/json",
+            "required": true,
+            "schema_type": "object"
+          },
+          "summary": "Update notification channel",
+          "tags": [
+            "channels"
           ]
         }
       ]
@@ -863,6 +989,114 @@
           "summary": "Update user preference",
           "tags": [
             "preferences"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rules",
+      "ops": [
+        {
+          "deprecated": false,
+          "description": "Create alert rule (undocumented; verify against your SigNoz version).",
+          "method": "POST",
+          "name": "create-rule",
+          "params": [],
+          "path": "/api/v1/rules",
+          "request_body": {
+            "content_type": "application/json",
+            "required": true,
+            "schema_type": "object"
+          },
+          "summary": "Create alert rule",
+          "tags": [
+            "rules"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "Delete alert rule (undocumented; verify against your SigNoz version).",
+          "method": "DELETE",
+          "name": "delete-rule",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/rules/{id}",
+          "request_body": null,
+          "summary": "Delete alert rule",
+          "tags": [
+            "rules"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "Get alert rule (undocumented; verify against your SigNoz version).",
+          "method": "GET",
+          "name": "get-rule",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/rules/{id}",
+          "request_body": null,
+          "summary": "Get alert rule",
+          "tags": [
+            "rules"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "List alert rules (undocumented; verify against your SigNoz version).",
+          "method": "GET",
+          "name": "list-rules",
+          "params": [],
+          "path": "/api/v1/rules",
+          "request_body": null,
+          "summary": "List alert rules",
+          "tags": [
+            "rules"
+          ]
+        },
+        {
+          "deprecated": false,
+          "description": "Update alert rule (undocumented; verify against your SigNoz version).",
+          "method": "PUT",
+          "name": "update-rule",
+          "params": [
+            {
+              "flag": "id",
+              "is_array": false,
+              "location": "path",
+              "name": "path__id",
+              "param_name": "id",
+              "required": true,
+              "schema_type": "string"
+            }
+          ],
+          "path": "/api/v1/rules/{id}",
+          "request_body": {
+            "content_type": "application/json",
+            "required": true,
+            "schema_type": "object"
+          },
+          "summary": "Update alert rule",
+          "tags": [
+            "rules"
           ]
         }
       ]

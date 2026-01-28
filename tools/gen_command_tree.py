@@ -189,6 +189,155 @@ def add_query_range_extras(resources: Dict[str, List[Dict]]) -> None:
         resources.setdefault(res, []).append(op)
 
 
+def path_param(name: str) -> Dict:
+    return {
+        "param_name": name,
+        "name": f"path__{safe_kebab(name)}",
+        "flag": safe_kebab(name),
+        "location": "path",
+        "required": True,
+        "schema_type": "string",
+        "is_array": False,
+    }
+
+
+def add_alerting_extras(resources: Dict[str, List[Dict]]) -> None:
+    channels = [
+        {
+            "name": "list-channels",
+            "method": "GET",
+            "path": "/api/v1/channels",
+            "summary": "List notification channels",
+            "description": "List notification channels (documented in SigNoz alerting docs).",
+            "params": [],
+            "request_body": None,
+        },
+        {
+            "name": "create-channel",
+            "method": "POST",
+            "path": "/api/v1/channels",
+            "summary": "Create notification channel",
+            "description": "Create notification channel (documented in SigNoz alerting docs).",
+            "params": [],
+            "request_body": {
+                "required": True,
+                "content_type": "application/json",
+                "schema_type": "object",
+            },
+        },
+        {
+            "name": "update-channel",
+            "method": "PUT",
+            "path": "/api/v1/channels/{id}",
+            "summary": "Update notification channel",
+            "description": "Update notification channel (documented in SigNoz alerting docs).",
+            "params": [path_param("id")],
+            "request_body": {
+                "required": True,
+                "content_type": "application/json",
+                "schema_type": "object",
+            },
+        },
+        {
+            "name": "delete-channel",
+            "method": "DELETE",
+            "path": "/api/v1/channels/{id}",
+            "summary": "Delete notification channel",
+            "description": "Delete notification channel (documented in SigNoz alerting docs).",
+            "params": [path_param("id")],
+            "request_body": None,
+        },
+    ]
+    rules = [
+        {
+            "name": "list-rules",
+            "method": "GET",
+            "path": "/api/v1/rules",
+            "summary": "List alert rules",
+            "description": "List alert rules (undocumented; verify against your SigNoz version).",
+            "params": [],
+            "request_body": None,
+        },
+        {
+            "name": "get-rule",
+            "method": "GET",
+            "path": "/api/v1/rules/{id}",
+            "summary": "Get alert rule",
+            "description": "Get alert rule (undocumented; verify against your SigNoz version).",
+            "params": [path_param("id")],
+            "request_body": None,
+        },
+        {
+            "name": "create-rule",
+            "method": "POST",
+            "path": "/api/v1/rules",
+            "summary": "Create alert rule",
+            "description": "Create alert rule (undocumented; verify against your SigNoz version).",
+            "params": [],
+            "request_body": {
+                "required": True,
+                "content_type": "application/json",
+                "schema_type": "object",
+            },
+        },
+        {
+            "name": "update-rule",
+            "method": "PUT",
+            "path": "/api/v1/rules/{id}",
+            "summary": "Update alert rule",
+            "description": "Update alert rule (undocumented; verify against your SigNoz version).",
+            "params": [path_param("id")],
+            "request_body": {
+                "required": True,
+                "content_type": "application/json",
+                "schema_type": "object",
+            },
+        },
+        {
+            "name": "delete-rule",
+            "method": "DELETE",
+            "path": "/api/v1/rules/{id}",
+            "summary": "Delete alert rule",
+            "description": "Delete alert rule (undocumented; verify against your SigNoz version).",
+            "params": [path_param("id")],
+            "request_body": None,
+        },
+    ]
+    alerts = [
+        {
+            "name": "list-alerts",
+            "method": "GET",
+            "path": "/api/v1/alerts",
+            "summary": "List alerts",
+            "description": "List alerts (undocumented; verify against your SigNoz version).",
+            "params": [],
+            "request_body": None,
+        },
+        {
+            "name": "get-alert",
+            "method": "GET",
+            "path": "/api/v1/alerts/{id}",
+            "summary": "Get alert",
+            "description": "Get alert (undocumented; verify against your SigNoz version).",
+            "params": [path_param("id")],
+            "request_body": None,
+        },
+    ]
+    for op in channels:
+        op["tags"] = ["channels"]
+        op["deprecated"] = False
+    for op in rules:
+        op["tags"] = ["rules"]
+        op["deprecated"] = False
+    for op in alerts:
+        op["tags"] = ["alerts"]
+        op["deprecated"] = False
+
+    resources.setdefault("channels", []).extend(channels)
+    resources.setdefault("rules", []).extend(rules)
+    resources.setdefault("alerts", []).extend(alerts)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate CLI command tree from OpenAPI.")
     parser.add_argument("--openapi", default="schemas/openapi.yml")
@@ -231,6 +380,7 @@ def main() -> int:
             )
 
     add_query_range_extras(resources)
+    add_alerting_extras(resources)
 
     resources_out = []
     for name in sorted(resources.keys()):

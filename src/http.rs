@@ -76,15 +76,13 @@ impl HttpClient {
             );
         }
         for (name, value) in &self.headers {
-            let header_name = HeaderName::from_bytes(name.as_bytes()).context("invalid header name")?;
+            let header_name =
+                HeaderName::from_bytes(name.as_bytes()).context("invalid header name")?;
             let header_value = HeaderValue::from_str(value).context("invalid header value")?;
             headers.insert(header_name, header_value);
         }
 
-        let mut req = self
-            .client
-            .request(method.parse()?, url)
-            .headers(headers);
+        let mut req = self.client.request(method.parse()?, url).headers(headers);
 
         if let Some(ct) = content_type {
             req = req.header("content-type", ct);
@@ -129,9 +127,18 @@ impl HttpClient {
 }
 
 fn build_url(base_url: &str, path: &str, query: &[(String, String)]) -> Result<Url> {
-    let mut base = base_url.trim_end_matches('/').to_string();
-    let path = if path.starts_with('/') { path } else { &format!("/{path}") };
-    base.push_str(path);
+    let base = if path.starts_with("http://") || path.starts_with("https://") {
+        path.to_string()
+    } else {
+        let mut base = base_url.trim_end_matches('/').to_string();
+        let path = if path.starts_with('/') {
+            path
+        } else {
+            &format!("/{path}")
+        };
+        base.push_str(path);
+        base
+    };
     let mut url = Url::parse(&base).context("invalid base url")?;
     if !query.is_empty() {
         let mut pairs = url.query_pairs_mut();
